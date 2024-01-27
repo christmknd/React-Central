@@ -21,7 +21,7 @@ function SearchCity() {
     return description.toLowerCase() === "clear sky" ? "Pas de soucis , vous n'en aurez pas besoin" : "Faites attention , vous en aurait peut être besoin";
   }
 
- const needAnUmbrella = parapluie(data.weather[0].description) ;
+  const needAnUmbrella = data.weather ? parapluie(data.weather[0].description) : '';
 
   return (
     <div className="search-card">

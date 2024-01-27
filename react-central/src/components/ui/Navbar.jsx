@@ -9,7 +9,6 @@ export default function Navbar () {
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/ageCalc">Age Calculator</Link></li>
                 <li><Link to="/bored">Bored App</Link></li>
-                <li><Link to="/hauteCouture"> Haute Couture</Link></li>
                 <li><Link to="/parapluie">Parapluie App</Link></li>
                 <li><Link to="/passwordGenerator">Password Generator</Link></li>
             </ul>
