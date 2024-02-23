@@ -31,7 +31,10 @@ a:hover {
   color: #535bf2;
 }
 
-
+p{
+  text-align: center; /* Pour centrer le texte */
+  margin-bottom: 1em; 
+}
 
 h1 {
   font-size: 3.2em;
@@ -112,6 +115,12 @@ nav {
     color: #535bf2;
   }
   
+  .homepage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 
 button {
   border-radius: 8px;

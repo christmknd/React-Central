@@ -5,12 +5,16 @@ export default function TemperatureForm() {
   const [fahrenheit, setFahrenheit] = useState(0);
   const [ctof, setCtof] = useState(null);
   const [ftoc, setFtoc] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const celsiusToFahrenheit = (event) => {
     event.preventDefault();
-    if (celsius > 0) {
-      setCtof(celsius * 1.8 + 32);
+    if (!celsius) {
+      setErrorMessage("Veuillez entrer une valeur en Celsius");
+      return;
     }
+    setCtof(celsius * 1.8 + 32);
+    setErrorMessage(""); // Réinitialiser le message d'erreur
   };
 
   const fahrenheitToCelsius = (event) => {
@@ -40,6 +44,7 @@ export default function TemperatureForm() {
               {ctof !== null && <p>Temperature : {ctof} Fahrenheit</p>}
             </span>
           </div>
+          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
         </form>
       </div>
 

@@ -5,6 +5,9 @@ export default function Navbar() {
     <nav>
       <ul>
         <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
           <Link to="/temperature">Temperature</Link>
         </li>
         <li>
