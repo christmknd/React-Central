@@ -10,18 +10,22 @@ function DiceGame() {
   };
 
   const victory = (number) => {
-    if ((number = 6)) {
-      return true;
-    } else return false;
+    if (number == 6) {
+      return "Vous avez gagné";
+    } else return "Vous avez perdu";
   };
 
   return (
     <div>
       <h2>Jeu de dés</h2>
       <button onClick={rollDice}>Roll Dice</button>
-      {result}
+      {result && <p>{result}</p>}
 
-      <div className="victory"></div>
+      {result && (
+        <div className="victory">
+          <p>{victory(result)}</p>
+        </div>
+      )}
     </div>
   );
 }

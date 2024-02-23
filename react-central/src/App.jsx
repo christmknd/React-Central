@@ -24,7 +24,7 @@ function App() {
         <Route path="/dice" element={<Dice />} />
         <Route path="/faussaire" element={<Faussaire />} />
         <Route path="/imc" element={<ImcCalculator />} />
-        <Route path="/parapluie" element={<ParapluieApp />} />
+        <Route path="/meteo" element={<ParapluieApp />} />
         <Route path="/passwordGenerator" element={<PasswordGenerator />} />
         <Route path="/temperature" element={<TemperatureConvertor />} />
         <Route path="/clock" element={<Time />} />
