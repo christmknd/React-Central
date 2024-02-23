@@ -8,7 +8,7 @@ export default function BoredApp() {
 
   const findanActivity = async () => {
     try {
-      const ifindit = await axios.get("http://www.boredapi.com/api/activity/");
+      const ifindit = await axios.get("https://www.boredapi.com/api/activity/");
       setActivity(ifindit.data.activity);
     } catch (error) {
       console.log(error);
