@@ -23,14 +23,14 @@ export default function TemperatureForm() {
       <h2>Temperature</h2>
 
       <div className="celsius">
-        <form onSubmit={celsiusToFahrenheit}>
+        <form>
           <label htmlFor="celsius">Celsius to Fahrenheit</label>
           <input
             value={celsius}
             onChange={(e) => setCelsius(e.target.value)}
             type="text"
           />
-          <button className="conversion-celsius" type="submit">
+          <button className="conversion-celsius" onClick={celsiusToFahrenheit}>
             Convertir
           </button>
           <br />
@@ -44,14 +44,14 @@ export default function TemperatureForm() {
       </div>
 
       <div className="fahreinheit">
-        <form onSubmit={fahrenheitToCelsius}>
+        <form>
           <label className="fahreinheit">Fahrenheit to Celsius</label>
           <input
             value={fahrenheit}
             onChange={(e) => setFahrenheit(e.target.value)}
             type="text"
           />
-          <button className="conversion-fahr" type="submit">
+          <button className="conversion-fahr" onClick={fahrenheitToCelsius}>
             Convertir
           </button>
           <br />

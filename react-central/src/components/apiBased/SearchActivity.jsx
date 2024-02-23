@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
-export default function BoredApp() {
+function BoredApp() {
   const [activity, setActivity] = useState("");
-
-  useEffect(() => {}, []);
+  const [searched, setSearched] = useState(false);
 
   const findanActivity = async () => {
     try {
@@ -15,25 +14,25 @@ export default function BoredApp() {
     }
   };
 
-  const generateActivity = (e) => {
-    e.preventDefault(); // Empêche le formulaire de se soumettre
+  const generateActivity = () => {
     findanActivity();
+    setSearched(true); //
   };
 
   return (
     <div>
-      <form action="" method="post">
+      <div>
         <h2>Search a random thing to do </h2>
-        <label htmlFor="activity"></label>
-        <button onClick={generateActivity} type="submit">
-          Let's Go ! Find it!
-        </button>
-      </form>
+        <button onClick={generateActivity}>Let's Go ! Find it!</button>
+      </div>
 
       <div className="result-div">
         <h3>This is what you can do ...</h3>
-        {activity && <p>{activity}</p>}
+        {searched && <p>{activity}</p>}{" "}
+        {/* Afficher l'activité si la recherche a été effectuée */}
       </div>
     </div>
   );
 }
+
+export default BoredApp;

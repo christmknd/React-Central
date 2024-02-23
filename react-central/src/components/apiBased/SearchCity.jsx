@@ -4,22 +4,30 @@ import axios from "axios";
 function SearchCity() {
   const [data, setData] = useState({});
   const [city, setCity] = useState("");
+  const [searched, setSearched] = useState(false); // État pour indiquer si la recherche a été effectuée ou non
   const apiKey = import.meta.env.VITE_API_KEY;
-  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang={fr}`;
-  //units=metric => celsius
-  const searchCity = (event) => {
-    axios.get(apiUrl).then((response) => {
-      setData(response.data);
-      console.log(response.data);
-    });
-    setCity("");
+
+  const searchCity = () => {
+    if (!city) return; // Vérifier si une ville a été saisie avant de déclencher la recherche
+
+    axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=fr`
+      )
+      .then((response) => {
+        setData(response.data);
+        setSearched(true); // Marquer la recherche comme effectuée
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
-  function parapluie(description) {
+  const parapluie = (description) => {
     return description.toLowerCase() === "clear sky"
       ? "Pas de soucis , vous n'en aurez pas besoin"
-      : "Faites attention , vous en aurait peut être besoin";
-  }
+      : "Faites attention , vous en aurez peut être besoin";
+  };
 
   const needAnUmbrella = data.weather
     ? parapluie(data.weather[0].description)
@@ -34,31 +42,29 @@ function SearchCity() {
           value={city}
           onChange={(event) => setCity(event.target.value)}
         />
-        <button onClick={searchCity} type="submit">
-          Entrer
-        </button>
+        <button onClick={searchCity}>Entrer</button>
       </div>
       <div className="result">
         <div className="city">
           <p>Ville : {data.name}</p>
         </div>
         <div className="temp">
-          {data.main ? <p>{data.main.temp.toFixed()}°C</p> : null}
+          {data.main && <p>{data.main.temp.toFixed()}°C</p>}
         </div>
         <div className="ciel">
-          {data.weather ? (
+          {data.weather && (
             <p>
               {data.weather[0].main} - {data.weather[0].description}
             </p>
-          ) : null}
+          )}
         </div>
         <div className="icon">
-          {data.weather ? (
+          {data.weather && (
             <img
               alt="weather"
               src={`https://openweathermap.org/img/wn/${data.weather[0].icon}.png`}
             />
-          ) : null}
+          )}
         </div>
         <div>{needAnUmbrella}</div>
       </div>

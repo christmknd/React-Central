@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 export default function IMCCalculator() {
   const [height, setHeight] = useState(0);
@@ -12,14 +12,18 @@ export default function IMCCalculator() {
     const parsedWeight = parseInt(String(weight));
 
     if (isNaN(parsedHeight) || parsedHeight <= 0) {
-      setResult('Entrez une taille valide!');
+      setResult("Entrez une taille valide!");
     } else if (isNaN(parsedWeight) || parsedWeight <= 0) {
-      setResult('Entrez un poids valide!');
+      setResult("Entrez un poids valide!");
     } else {
-      const bmi = (parsedWeight / ((parsedHeight * parsedHeight) / 10000)).toFixed(2);
+      const bmi = (
+        parsedWeight /
+        ((parsedHeight * parsedHeight) / 10000)
+      ).toFixed(2);
 
       if (bmi < 18.6) setResult(`Insuffisance pondérale : ${bmi}`);
-      else if (bmi >= 18.6 && bmi < 24.9) setResult(`Corpulence normale : ${bmi}`);
+      else if (bmi >= 18.6 && bmi < 24.9)
+        setResult(`Corpulence normale : ${bmi}`);
       else setResult(`Surpoids: ${bmi}`);
     }
   };
@@ -30,12 +34,20 @@ export default function IMCCalculator() {
 
       <form onSubmit={calculateBMI}>
         <label htmlFor="height">Taille (en cm)</label>
-        <input value={height} onChange={(e) => setHeight(e.target.value)} type="text" />
+        <input
+          value={height}
+          onChange={(e) => setHeight(e.target.value)}
+          type="text"
+        />
 
         <label htmlFor="weight">Poids (en kg)</label>
-        <input value={weight} onChange={(e) => setWeight(e.target.value)} type="text" />
+        <input
+          value={weight}
+          onChange={(e) => setWeight(e.target.value)}
+          type="text"
+        />
 
-        <button className="calculate-button" type="submit">Calculer</button>
+        <button className="calculate-button">Calculer</button>
 
         <div className="result">
           <span>{result !== null && <p>{result}</p>}</span>
@@ -44,4 +56,3 @@ export default function IMCCalculator() {
     </div>
   );
 }
-
