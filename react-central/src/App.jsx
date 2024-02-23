@@ -1,11 +1,11 @@
 import './App.css';
 import Navbar from './components/ui/Navbar';
-import AgeCalculator from './views/AgeCalculator';
-import BoredApp from './views/BoredApp';
+import AgeCalculator from './views/javascript/AgeCalculator';
+import BoredApp from './views/api/BoredApp';
 import Home from "./views/Home";
 import PageNotFound from './views/PageNotFound';
-import ParapluieApp from "./views/ParapluieApp";
-import PasswordGenerator from "./views/PasswordGenerator"
+import ParapluieApp from "./views/api/ParapluieApp";
+import PasswordGenerator from "./views/javascript/PasswordGenerator"
 import { Route, Routes } from "react-router-dom"
 
 
