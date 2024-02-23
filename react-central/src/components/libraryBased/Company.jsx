@@ -16,7 +16,7 @@ function Company() {
 
     setRaison_sociale(faker.company.name());
     setAdresse(faker.location.streetAddress() + "," + faker.location.city());
-    setTelephone(faker.helpers.replaceSymbolWithNumber("+33 01 ## ## ## ##"));
+    setTelephone(faker.string.numeric(10));
     setSiren(nine);
     setSiret(nine + "" + five);
   };

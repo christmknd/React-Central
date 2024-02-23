@@ -12,7 +12,7 @@ function Identity() {
   const generateid = () => {
     setPrenom(faker.person.firstName());
     setNom(faker.person.lastName());
-    setTelephone(faker.helpers.replaceSymbolWithNumber("+33 06 ## ## ## ##"));
+    setTelephone(faker.string.numeric(10));
     setEmail(faker.internet.email());
     setPassword(faker.internet.password());
     setAdresse(faker.location.streetAddress() + "," + faker.location.city());
