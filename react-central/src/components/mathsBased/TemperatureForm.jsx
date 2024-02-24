@@ -1,24 +1,31 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 export default function TemperatureForm() {
   const [celsius, setCelsius] = useState(0);
   const [fahrenheit, setFahrenheit] = useState(0);
   const [ctof, setCtof] = useState(null);
   const [ftoc, setFtoc] = useState(null);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState(""); // État pour le message d'erreur
 
   const celsiusToFahrenheit = (event) => {
     event.preventDefault();
-    if (!celsius) {
-      setErrorMessage("Veuillez entrer une valeur en Celsius");
+    if (isNaN(celsius) || celsius === "") {
+      setErrorMessage("Veuillez entrer une valeur numérique pour Celsius");
       return;
     }
+
+    setErrorMessage(""); // Réinitialiser le message d'erreur s'il n'y a pas d'erreur
     setCtof(celsius * 1.8 + 32);
-    setErrorMessage(""); // Réinitialiser le message d'erreur
   };
 
   const fahrenheitToCelsius = (event) => {
     event.preventDefault();
+    if (isNaN(fahrenheit) || fahrenheit === "") {
+      setErrorMessage("Veuillez entrer une valeur numérique pour Fahrenheit");
+      return;
+    }
+
+    setErrorMessage(""); // Réinitialiser le message d'erreur s'il n'y a pas d'erreur
     setFtoc((fahrenheit - 32) / 1.8);
   };
 
@@ -44,7 +51,6 @@ export default function TemperatureForm() {
               {ctof !== null && <p>Temperature : {ctof} Fahrenheit</p>}
             </span>
           </div>
-          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
         </form>
       </div>
 
@@ -66,6 +72,7 @@ export default function TemperatureForm() {
           </div>
         </form>
       </div>
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
     </div>
   );
 }
