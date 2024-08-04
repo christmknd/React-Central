@@ -1,6 +1,6 @@
 ﻿# React-Central
 
-React Central est la plateforme ou sont regroupés tout mes projets de taille modeste réalisé en Vue.
+React Central est la plateforme ou sont regroupés tout mes projets de taille modeste réalisé en React.
 
 ## Environnement
 
